@@ -1,22 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package lab6p2_diegorosales;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
-/**
- *
- * @author Diego
- */
+
 public class PanelPrincipal extends javax.swing.JFrame {
 
     /**
      * Creates new form PanelPrincipal
      */
+    ArrayList<Jugador> jugadores = new ArrayList<>();
+    ArrayList<Equipo> equipos = new ArrayList<>();
     public PanelPrincipal() {
+        
+        
         initComponents();
         llenarPosiciones();
     }
@@ -37,11 +40,11 @@ public class PanelPrincipal extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        button_crearequipo = new javax.swing.JButton();
+        tf_pais = new javax.swing.JTextField();
+        tf_nombreequipos = new javax.swing.JTextField();
+        tf_ciudad = new javax.swing.JTextField();
+        tf_estadio = new javax.swing.JTextField();
         crearequipos_goback = new javax.swing.JPanel();
         crearquipos_gobacktext = new javax.swing.JLabel();
         jd_CrearJugadores = new javax.swing.JDialog();
@@ -50,9 +53,9 @@ public class PanelPrincipal extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jTextField5 = new javax.swing.JTextField();
-        jSpinner1 = new javax.swing.JSpinner();
+        button_crearjugadores = new javax.swing.JButton();
+        tf_nombreJug = new javax.swing.JTextField();
+        spinner_edad = new javax.swing.JSpinner();
         combobox_posicion = new javax.swing.JComboBox<>();
         crearjugadores_goback = new javax.swing.JPanel();
         crearjugadores_gobacktext = new javax.swing.JLabel();
@@ -64,8 +67,8 @@ public class PanelPrincipal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jl_jugadores = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
-        jButton6 = new javax.swing.JButton();
+        tree_equipos = new javax.swing.JTree();
+        button_transferir = new javax.swing.JButton();
         transferencias_goback = new javax.swing.JPanel();
         transferencias_gobacktext = new javax.swing.JLabel();
         popup_jugadores = new javax.swing.JPopupMenu();
@@ -81,11 +84,11 @@ public class PanelPrincipal extends javax.swing.JFrame {
         button_show_transferencias = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        menu_crearequipos = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        menu_crearjugadores = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        menu_transferencias = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenu2 = new javax.swing.JMenu();
 
@@ -116,20 +119,23 @@ public class PanelPrincipal extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(0, 0, 255));
         jLabel7.setText("Estadio");
 
-        jButton4.setText("Agregar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        button_crearequipo.setText("Crear");
+        button_crearequipo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button_crearequipoMouseClicked(evt);
+            }
+        });
+        button_crearequipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                button_crearequipoActionPerformed(evt);
             }
         });
 
-        jTextField1.setText("jTextField1");
-
-        jTextField2.setText("jTextField2");
-
-        jTextField3.setText("jTextField3");
-
-        jTextField4.setText("jTextField4");
+        tf_nombreequipos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_nombreequiposActionPerformed(evt);
+            }
+        });
 
         crearequipos_goback.setBackground(new java.awt.Color(204, 204, 255));
         crearequipos_goback.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -182,23 +188,23 @@ public class PanelPrincipal extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(tf_pais, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField4))
+                                    .addComponent(tf_estadio))
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(jLabel6)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(tf_ciudad, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(tf_nombreequipos, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(220, 220, 220)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(button_crearequipo, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -211,22 +217,22 @@ public class PanelPrincipal extends javax.swing.JFrame {
                     .addComponent(crearequipos_goback, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(71, 71, 71)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_pais, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(35, 35, 35)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_nombreequipos, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(34, 34, 34)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField3))
+                    .addComponent(tf_ciudad))
                 .addGap(36, 36, 36)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tf_estadio, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(button_crearequipo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52))
         );
 
@@ -263,21 +269,25 @@ public class PanelPrincipal extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(255, 51, 51));
         jLabel11.setText("Posicion");
 
-        jButton5.setText("Agregar");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        button_crearjugadores.setText("Crear");
+        button_crearjugadores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button_crearjugadoresMouseClicked(evt);
+            }
+        });
+        button_crearjugadores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                button_crearjugadoresActionPerformed(evt);
             }
         });
 
-        jTextField5.setText("jTextField5");
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        tf_nombreJug.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                tf_nombreJugActionPerformed(evt);
             }
         });
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(15, 15, 45, 1));
+        spinner_edad.setModel(new javax.swing.SpinnerNumberModel(15, 15, 45, 1));
 
         combobox_posicion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -338,15 +348,15 @@ public class PanelPrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(spinner_edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(tf_nombreJug, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(226, 226, 226)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(button_crearjugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -360,17 +370,17 @@ public class PanelPrincipal extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tf_nombreJug, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spinner_edad, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
                 .addGap(57, 57, 57)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
                     .addComponent(combobox_posicion, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(67, 67, 67)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(button_crearjugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -403,11 +413,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Equipos");
 
-        jl_jugadores.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        jl_jugadores.setModel(new DefaultListModel());
         jl_jugadores.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jl_jugadoresMouseClicked(evt);
@@ -415,12 +421,19 @@ public class PanelPrincipal extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jl_jugadores);
 
-        jScrollPane2.setViewportView(jTree1);
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Equipos");
+        tree_equipos.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane2.setViewportView(tree_equipos);
 
-        jButton6.setText("------->");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        button_transferir.setText("------->");
+        button_transferir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button_transferirMouseClicked(evt);
+            }
+        });
+        button_transferir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                button_transferirActionPerformed(evt);
             }
         });
 
@@ -481,7 +494,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
                 .addGap(122, 122, 122)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(button_transferir, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(104, 104, 104))
@@ -506,7 +519,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(159, 159, 159)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(button_transferir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(71, Short.MAX_VALUE))
         );
 
@@ -584,6 +597,11 @@ public class PanelPrincipal extends javax.swing.JFrame {
                 button_show_transferenciasMouseClicked(evt);
             }
         });
+        button_show_transferencias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_show_transferenciasActionPerformed(evt);
+            }
+        });
         jToolBar1.add(button_show_transferencias);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -615,19 +633,34 @@ public class PanelPrincipal extends javax.swing.JFrame {
 
         jMenu1.setText("Opciones");
 
-        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMenuItem5.setText("Crear Equipos");
-        jMenu1.add(jMenuItem5);
+        menu_crearequipos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        menu_crearequipos.setText("Crear Equipos");
+        menu_crearequipos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_crearequiposActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menu_crearequipos);
         jMenu1.add(jSeparator1);
 
-        jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_J, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMenuItem6.setText("Crear Jugadores");
-        jMenu1.add(jMenuItem6);
+        menu_crearjugadores.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_J, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        menu_crearjugadores.setText("Crear Jugadores");
+        menu_crearjugadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_crearjugadoresActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menu_crearjugadores);
         jMenu1.add(jSeparator3);
 
-        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMenuItem4.setText("Transferencias");
-        jMenu1.add(jMenuItem4);
+        menu_transferencias.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        menu_transferencias.setText("Transferencias");
+        menu_transferencias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_transferenciasActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menu_transferencias);
         jMenu1.add(jSeparator2);
 
         jMenuBar1.add(jMenu1);
@@ -651,6 +684,26 @@ public class PanelPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
+    private void vaciarList(){
+        
+        DefaultListModel modelo = (DefaultListModel) jl_jugadores.getModel();
+        modelo.removeAllElements();
+        jl_jugadores.setModel(modelo);
+    }
+    private void llenarList(){
+        if(jugadores.isEmpty()){
+            
+        }
+        else{
+        DefaultListModel modelo = (DefaultListModel) jl_jugadores.getModel();
+        for (int i = 0; i < jugadores.size(); i++) {
+            modelo.addElement(jugadores.get(i));
+            
+        }
+        jl_jugadores.setModel(modelo);
+        }
+    }
+    
     private void llenarPosiciones(){
         DefaultComboBoxModel model = (DefaultComboBoxModel) combobox_posicion.getModel(); 
         model.addElement("Delantero");
@@ -670,21 +723,21 @@ public class PanelPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_button_show_crearequipoActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void button_crearequipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_crearequipoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_button_crearequipoActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void button_crearjugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_crearjugadoresActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_button_crearjugadoresActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void tf_nombreJugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_nombreJugActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_tf_nombreJugActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void button_transferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_transferirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_button_transferirActionPerformed
 
     private void button_show_crearequipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_show_crearequipoMouseClicked
         this.setVisible(false);
@@ -754,6 +807,8 @@ public class PanelPrincipal extends javax.swing.JFrame {
         jd_Transferencias.setVisible(true);
         jd_Transferencias.pack();
         jd_Transferencias.setSize(800, 600);
+        vaciarList();
+            llenarList();
     }//GEN-LAST:event_button_show_transferenciasMouseClicked
 
     private void jl_jugadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_jugadoresMouseClicked
@@ -767,6 +822,94 @@ public class PanelPrincipal extends javax.swing.JFrame {
     private void combobox_posicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combobox_posicionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_combobox_posicionActionPerformed
+
+    private void tf_nombreequiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_nombreequiposActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_nombreequiposActionPerformed
+
+    private void button_transferirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_transferirMouseClicked
+        DefaultTreeModel treemodel = (DefaultTreeModel) tree_equipos.getModel();
+        DefaultListModel listmodel = (DefaultListModel) jl_jugadores.getModel();
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) treemodel.getRoot();
+        String nombre;
+        String posicion;
+        int edad;
+        
+        nombre = ((Jugador)listmodel.get(jl_jugadores.getSelectedIndex())).getNombre();
+        posicion = ((Jugador)listmodel.get(jl_jugadores.getSelectedIndex())).getPosicion();
+        edad = ((Jugador)listmodel.get(jl_jugadores.getSelectedIndex())).getEdad();
+        
+        boolean c = false;
+        
+    }//GEN-LAST:event_button_transferirMouseClicked
+
+    private void button_crearequipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_crearequipoMouseClicked
+        if(tf_pais.getText().isEmpty() || tf_nombreequipos.getText().isEmpty() || tf_ciudad.getText().isEmpty() || tf_estadio.getText().isEmpty()){
+            JOptionPane.showMessageDialog(jd_CrearEquipos, "Tienes que llenar todos los campos para crear un equipo");
+        }
+        else{
+            Equipo e = new Equipo();
+            e.setNombre(tf_nombreequipos.getText());
+            e.setPais(tf_pais.getText());
+            e.setCiudad(tf_ciudad.getText());
+            e.setEstadio(tf_estadio.getText());
+            equipos.add(e);
+            tf_ciudad.setText("");
+            tf_estadio.setText("");
+            tf_nombreequipos.setText("");
+            tf_pais.setText("");
+                   
+                    
+             
+        }
+    }//GEN-LAST:event_button_crearequipoMouseClicked
+
+    private void button_crearjugadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_crearjugadoresMouseClicked
+        if(tf_nombreJug.getText().isEmpty()){
+            JOptionPane.showMessageDialog(jd_CrearJugadores, "Tienes que llenar todos los campos para crear un Jugador");
+        }
+        else{
+            Jugador j = new Jugador();
+            j.setNombre(tf_nombreJug.getText());
+            j.setEdad((Integer)spinner_edad.getValue());
+            j.setPosicion(combobox_posicion.getSelectedItem().toString());
+            jugadores.add(j);
+            
+            tf_nombreJug.setText("");
+            
+            
+        }
+    }//GEN-LAST:event_button_crearjugadoresMouseClicked
+
+    private void menu_crearequiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_crearequiposActionPerformed
+          this.setVisible(false);
+        
+        jd_CrearEquipos.setVisible(true);
+        jd_CrearEquipos.pack();
+        jd_CrearEquipos.setSize(800, 600);
+    }//GEN-LAST:event_menu_crearequiposActionPerformed
+
+    private void menu_crearjugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_crearjugadoresActionPerformed
+            this.setVisible(false);
+        
+        jd_CrearJugadores.setVisible(true);
+        jd_CrearJugadores.pack();
+        jd_CrearJugadores.setSize(800, 600);
+    }//GEN-LAST:event_menu_crearjugadoresActionPerformed
+
+    private void button_show_transferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_show_transferenciasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_button_show_transferenciasActionPerformed
+
+    private void menu_transferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_transferenciasActionPerformed
+       this.setVisible(false);
+        
+        jd_Transferencias.setVisible(true);
+        jd_Transferencias.pack();
+        jd_Transferencias.setSize(800, 600);
+        vaciarList();
+            llenarList();
+    }//GEN-LAST:event_menu_transferenciasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -804,9 +947,12 @@ public class PanelPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton button_crearequipo;
+    private javax.swing.JButton button_crearjugadores;
     private javax.swing.JButton button_show_crearequipo;
     private javax.swing.JButton button_show_crearjugadores;
     private javax.swing.JButton button_show_transferencias;
+    private javax.swing.JButton button_transferir;
     private javax.swing.JComboBox<String> combobox_posicion;
     private javax.swing.JPanel crearequipos_goback;
     private javax.swing.JPanel crearequipos_goback1;
@@ -816,9 +962,6 @@ public class PanelPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel crearquipos_gobacktext;
     private javax.swing.JLabel crearquipos_gobacktext1;
     private javax.swing.JLabel crearquipos_gobacktext2;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -836,9 +979,6 @@ public class PanelPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
@@ -849,22 +989,25 @@ public class PanelPrincipal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JTree jTree1;
     private javax.swing.JDialog jd_CrearEquipos;
     private javax.swing.JDialog jd_CrearJugadores;
     private javax.swing.JDialog jd_Transferencias;
     private javax.swing.JList<String> jl_jugadores;
     private javax.swing.JMenu jmenu_eliminar;
     private javax.swing.JMenu jmenu_modificar;
+    private javax.swing.JMenuItem menu_crearequipos;
+    private javax.swing.JMenuItem menu_crearjugadores;
+    private javax.swing.JMenuItem menu_transferencias;
     private javax.swing.JPopupMenu popup_jugadores;
+    private javax.swing.JSpinner spinner_edad;
+    private javax.swing.JTextField tf_ciudad;
+    private javax.swing.JTextField tf_estadio;
+    private javax.swing.JTextField tf_nombreJug;
+    private javax.swing.JTextField tf_nombreequipos;
+    private javax.swing.JTextField tf_pais;
     private javax.swing.JPanel transferencias_goback;
     private javax.swing.JLabel transferencias_gobacktext;
+    private javax.swing.JTree tree_equipos;
     // End of variables declaration//GEN-END:variables
 }
