@@ -4,6 +4,9 @@
  */
 package lab6p2_diegorosales;
 
+import java.awt.Color;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author Diego
@@ -15,6 +18,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
      */
     public PanelPrincipal() {
         initComponents();
+        llenarPosiciones();
     }
 
     /**
@@ -49,17 +53,25 @@ public class PanelPrincipal extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jTextField5 = new javax.swing.JTextField();
         jSpinner1 = new javax.swing.JSpinner();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        combobox_posicion = new javax.swing.JComboBox<>();
+        crearjugadores_goback = new javax.swing.JPanel();
+        crearjugadores_gobacktext = new javax.swing.JLabel();
         jd_Transferencias = new javax.swing.JDialog();
         jPanel5 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jl_jugadores = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
         jButton6 = new javax.swing.JButton();
+        transferencias_goback = new javax.swing.JPanel();
+        transferencias_gobacktext = new javax.swing.JLabel();
+        popup_jugadores = new javax.swing.JPopupMenu();
+        jmenu_modificar = new javax.swing.JMenu();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
+        jmenu_eliminar = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -119,13 +131,21 @@ public class PanelPrincipal extends javax.swing.JFrame {
 
         jTextField4.setText("jTextField4");
 
+        crearequipos_goback.setBackground(new java.awt.Color(204, 204, 255));
         crearequipos_goback.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 crearequipos_gobackMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                crearequipos_gobackMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                crearequipos_gobackMouseExited(evt);
+            }
         });
 
-        crearquipos_gobacktext.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        crearquipos_gobacktext.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        crearquipos_gobacktext.setForeground(new java.awt.Color(0, 0, 0));
         crearquipos_gobacktext.setText("<------");
 
         javax.swing.GroupLayout crearequipos_gobackLayout = new javax.swing.GroupLayout(crearequipos_goback);
@@ -257,14 +277,55 @@ public class PanelPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(15, 15, 45, 1));
+
+        combobox_posicion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combobox_posicionActionPerformed(evt);
+            }
+        });
+
+        crearjugadores_goback.setBackground(new java.awt.Color(102, 255, 102));
+        crearjugadores_goback.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                crearjugadores_gobackMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                crearjugadores_gobackMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                crearjugadores_gobackMouseExited(evt);
+            }
+        });
+
+        crearjugadores_gobacktext.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        crearjugadores_gobacktext.setForeground(new java.awt.Color(0, 0, 0));
+        crearjugadores_gobacktext.setText("<------");
+
+        javax.swing.GroupLayout crearjugadores_gobackLayout = new javax.swing.GroupLayout(crearjugadores_goback);
+        crearjugadores_goback.setLayout(crearjugadores_gobackLayout);
+        crearjugadores_gobackLayout.setHorizontalGroup(
+            crearjugadores_gobackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(crearjugadores_gobackLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(crearjugadores_gobacktext, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        crearjugadores_gobackLayout.setVerticalGroup(
+            crearjugadores_gobackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, crearjugadores_gobackLayout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addComponent(crearjugadores_gobacktext)
+                .addGap(21, 21, 21))
+        );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(227, Short.MAX_VALUE)
+                .addComponent(crearjugadores_goback, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 167, Short.MAX_VALUE)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(191, 191, 191))
             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -273,7 +334,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(combobox_posicion, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
@@ -291,8 +352,11 @@ public class PanelPrincipal extends javax.swing.JFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jLabel8)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel8))
+                    .addComponent(crearjugadores_goback, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
@@ -304,7 +368,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
                 .addGap(57, 57, 57)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(combobox_posicion, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(67, 67, 67)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(33, Short.MAX_VALUE))
@@ -339,12 +403,17 @@ public class PanelPrincipal extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Equipos");
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        jl_jugadores.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jl_jugadores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jl_jugadoresMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jl_jugadores);
 
         jScrollPane2.setViewportView(jTree1);
 
@@ -355,12 +424,51 @@ public class PanelPrincipal extends javax.swing.JFrame {
             }
         });
 
+        transferencias_goback.setBackground(new java.awt.Color(255, 153, 102));
+        transferencias_goback.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                transferencias_gobackMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                transferencias_gobackMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                transferencias_gobackMouseExited(evt);
+            }
+        });
+
+        transferencias_gobacktext.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        transferencias_gobacktext.setForeground(new java.awt.Color(0, 0, 0));
+        transferencias_gobacktext.setText("<------");
+
+        javax.swing.GroupLayout transferencias_gobackLayout = new javax.swing.GroupLayout(transferencias_goback);
+        transferencias_goback.setLayout(transferencias_gobackLayout);
+        transferencias_gobackLayout.setHorizontalGroup(
+            transferencias_gobackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 61, Short.MAX_VALUE)
+            .addGroup(transferencias_gobackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(transferencias_gobackLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(transferencias_gobacktext, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                    .addGap(7, 7, 7)))
+        );
+        transferencias_gobackLayout.setVerticalGroup(
+            transferencias_gobackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+            .addGroup(transferencias_gobackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(transferencias_gobackLayout.createSequentialGroup()
+                    .addGap(20, 20, 20)
+                    .addComponent(transferencias_gobacktext)
+                    .addContainerGap(20, Short.MAX_VALUE)))
+        );
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(transferencias_goback, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(196, 196, 196))
             .addGroup(jPanel5Layout.createSequentialGroup()
@@ -381,8 +489,11 @@ public class PanelPrincipal extends javax.swing.JFrame {
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jLabel12)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jLabel12))
+                    .addComponent(transferencias_goback, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
@@ -409,6 +520,13 @@ public class PanelPrincipal extends javax.swing.JFrame {
             jd_TransferenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        jmenu_modificar.setText("Modificar");
+        popup_jugadores.add(jmenu_modificar);
+        popup_jugadores.add(jSeparator4);
+
+        jmenu_eliminar.setText("Eliminar");
+        popup_jugadores.add(jmenu_eliminar);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 600));
@@ -461,6 +579,11 @@ public class PanelPrincipal extends javax.swing.JFrame {
         button_show_transferencias.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         button_show_transferencias.setMaximumSize(new java.awt.Dimension(104, 44));
         button_show_transferencias.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        button_show_transferencias.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button_show_transferenciasMouseClicked(evt);
+            }
+        });
         jToolBar1.add(button_show_transferencias);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -527,9 +650,20 @@ public class PanelPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private void llenarPosiciones(){
+        DefaultComboBoxModel model = (DefaultComboBoxModel) combobox_posicion.getModel(); 
+        model.addElement("Delantero");
+        model.addElement("Defensa");
+        model.addElement("Portero");
+        combobox_posicion.setModel(model);
+    }
     private void button_show_crearjugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_show_crearjugadoresActionPerformed
-        // TODO add your handling code here:
+             this.setVisible(false);
+        
+        jd_CrearJugadores.setVisible(true);
+        jd_CrearJugadores.pack();
+        jd_CrearJugadores.setSize(800, 600);
     }//GEN-LAST:event_button_show_crearjugadoresActionPerformed
 
     private void button_show_crearequipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_show_crearequipoActionPerformed
@@ -567,6 +701,72 @@ public class PanelPrincipal extends javax.swing.JFrame {
         this.setSize(800,600);
                 
     }//GEN-LAST:event_crearequipos_gobackMouseClicked
+
+    private void crearequipos_gobackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearequipos_gobackMouseEntered
+        crearequipos_goback.setBackground(Color.red);
+        crearquipos_gobacktext.setForeground(Color.white);
+    }//GEN-LAST:event_crearequipos_gobackMouseEntered
+
+    private void crearequipos_gobackMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearequipos_gobackMouseExited
+        crearequipos_goback.setBackground(new Color(204,204,255));
+        crearquipos_gobacktext.setForeground(Color.black);
+    }//GEN-LAST:event_crearequipos_gobackMouseExited
+
+    private void crearjugadores_gobackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearjugadores_gobackMouseClicked
+             jd_CrearJugadores.setVisible(false);
+        this.setVisible(true);
+        this.pack();
+        this.setSize(800,600);
+            
+    }//GEN-LAST:event_crearjugadores_gobackMouseClicked
+
+    private void crearjugadores_gobackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearjugadores_gobackMouseEntered
+        crearjugadores_goback.setBackground(Color.red);
+        crearjugadores_gobacktext.setForeground(Color.white);
+    }//GEN-LAST:event_crearjugadores_gobackMouseEntered
+
+    private void crearjugadores_gobackMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearjugadores_gobackMouseExited
+        crearjugadores_goback.setBackground(new Color(102,255,102));
+        crearjugadores_gobacktext.setForeground(Color.black);
+    }//GEN-LAST:event_crearjugadores_gobackMouseExited
+
+    private void transferencias_gobackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transferencias_gobackMouseClicked
+               jd_Transferencias.setVisible(false);
+        this.setVisible(true);
+        this.pack();
+        this.setSize(800,600);
+            
+    }//GEN-LAST:event_transferencias_gobackMouseClicked
+
+    private void transferencias_gobackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transferencias_gobackMouseEntered
+       transferencias_goback.setBackground(Color.red);
+        transferencias_gobacktext.setForeground(Color.white);
+    }//GEN-LAST:event_transferencias_gobackMouseEntered
+
+    private void transferencias_gobackMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transferencias_gobackMouseExited
+        transferencias_goback.setBackground(new Color(255,153,102));
+        transferencias_gobacktext.setForeground(Color.black);
+    }//GEN-LAST:event_transferencias_gobackMouseExited
+
+    private void button_show_transferenciasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_show_transferenciasMouseClicked
+        this.setVisible(false);
+        
+        jd_Transferencias.setVisible(true);
+        jd_Transferencias.pack();
+        jd_Transferencias.setSize(800, 600);
+    }//GEN-LAST:event_button_show_transferenciasMouseClicked
+
+    private void jl_jugadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_jugadoresMouseClicked
+        if(jl_jugadores.getSelectedIndex()>=0){
+            if(evt.getButton()==3){
+                popup_jugadores.show(jl_jugadores, evt.getX(), evt.getY());
+            }
+        }
+    }//GEN-LAST:event_jl_jugadoresMouseClicked
+
+    private void combobox_posicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combobox_posicionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combobox_posicionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -607,12 +807,18 @@ public class PanelPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton button_show_crearequipo;
     private javax.swing.JButton button_show_crearjugadores;
     private javax.swing.JButton button_show_transferencias;
+    private javax.swing.JComboBox<String> combobox_posicion;
     private javax.swing.JPanel crearequipos_goback;
+    private javax.swing.JPanel crearequipos_goback1;
+    private javax.swing.JPanel crearequipos_goback2;
+    private javax.swing.JPanel crearjugadores_goback;
+    private javax.swing.JLabel crearjugadores_gobacktext;
     private javax.swing.JLabel crearquipos_gobacktext;
+    private javax.swing.JLabel crearquipos_gobacktext1;
+    private javax.swing.JLabel crearquipos_gobacktext2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -627,7 +833,6 @@ public class PanelPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -643,6 +848,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
@@ -654,5 +860,11 @@ public class PanelPrincipal extends javax.swing.JFrame {
     private javax.swing.JDialog jd_CrearEquipos;
     private javax.swing.JDialog jd_CrearJugadores;
     private javax.swing.JDialog jd_Transferencias;
+    private javax.swing.JList<String> jl_jugadores;
+    private javax.swing.JMenu jmenu_eliminar;
+    private javax.swing.JMenu jmenu_modificar;
+    private javax.swing.JPopupMenu popup_jugadores;
+    private javax.swing.JPanel transferencias_goback;
+    private javax.swing.JLabel transferencias_gobacktext;
     // End of variables declaration//GEN-END:variables
 }
