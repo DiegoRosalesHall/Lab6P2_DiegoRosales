@@ -556,6 +556,11 @@ public class PanelPrincipal extends javax.swing.JFrame {
         popup_jugadores.add(jSeparator4);
 
         jmenu_eliminar.setText("Eliminar");
+        jmenu_eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmenu_eliminarMouseClicked(evt);
+            }
+        });
         popup_jugadores.add(jmenu_eliminar);
 
         jd_Modificar.setMaximumSize(new java.awt.Dimension(800, 600));
@@ -1079,6 +1084,19 @@ public class PanelPrincipal extends javax.swing.JFrame {
         jd_Modificar.pack();
         jd_Modificar.setSize(800, 600);
     }//GEN-LAST:event_jmenu_modificarMouseClicked
+
+    private void jmenu_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmenu_eliminarMouseClicked
+        int confirmado = JOptionPane.showConfirmDialog(jd_Modificar, "Estas seguro que deseas borrar a este jugador?");
+        if (JOptionPane.OK_OPTION == confirmado){
+            DefaultListModel l = (DefaultListModel) jl_jugadores.getModel();
+            l.remove(pos);
+            JOptionPane.showMessageDialog(jd_Modificar, "Has eliminado al jugador con exito");
+        }
+            
+        else{
+  
+        }
+    }//GEN-LAST:event_jmenu_eliminarMouseClicked
 
     /**
      * @param args the command line arguments
