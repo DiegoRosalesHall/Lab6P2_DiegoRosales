@@ -11,7 +11,7 @@ import javax.swing.tree.DefaultTreeModel;
 
 
 public class PanelPrincipal extends javax.swing.JFrame {
-
+    int pos=0;
     /**
      * Creates new form PanelPrincipal
      */
@@ -74,6 +74,14 @@ public class PanelPrincipal extends javax.swing.JFrame {
         jmenu_modificar = new javax.swing.JMenu();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
         jmenu_eliminar = new javax.swing.JMenu();
+        jd_Modificar = new javax.swing.JDialog();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        tf_nombre_modificar = new javax.swing.JTextField();
+        spinner_edadmodificar = new javax.swing.JSpinner();
+        button_modificar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -534,11 +542,108 @@ public class PanelPrincipal extends javax.swing.JFrame {
         );
 
         jmenu_modificar.setText("Modificar");
+        jmenu_modificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmenu_modificarMouseClicked(evt);
+            }
+        });
+        jmenu_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmenu_modificarActionPerformed(evt);
+            }
+        });
         popup_jugadores.add(jmenu_modificar);
         popup_jugadores.add(jSeparator4);
 
         jmenu_eliminar.setText("Eliminar");
         popup_jugadores.add(jmenu_eliminar);
+
+        jd_Modificar.setMaximumSize(new java.awt.Dimension(800, 600));
+        jd_Modificar.setMinimumSize(new java.awt.Dimension(800, 600));
+        jd_Modificar.setPreferredSize(new java.awt.Dimension(800, 600));
+
+        jPanel3.setBackground(new java.awt.Color(153, 204, 255));
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel15.setText("Modificar Jugador");
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel16.setText("Nombre");
+
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel17.setText("Edad");
+
+        spinner_edadmodificar.setModel(new javax.swing.SpinnerNumberModel(15, 15, 45, 1));
+
+        button_modificar.setText("Modificar");
+        button_modificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button_modificarMouseClicked(evt);
+            }
+        });
+        button_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_modificarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(195, Short.MAX_VALUE)
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(170, 170, 170))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(143, 143, 143)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel16)
+                                .addGap(18, 18, 18)
+                                .addComponent(tf_nombre_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(spinner_edadmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(277, 277, 277)
+                        .addComponent(button_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(jLabel15)
+                .addGap(73, 73, 73)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tf_nombre_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16))
+                .addGap(79, 79, 79)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(spinner_edadmodificar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                .addComponent(button_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
+        );
+
+        javax.swing.GroupLayout jd_ModificarLayout = new javax.swing.GroupLayout(jd_Modificar.getContentPane());
+        jd_Modificar.getContentPane().setLayout(jd_ModificarLayout);
+        jd_ModificarLayout.setHorizontalGroup(
+            jd_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_ModificarLayout.setVerticalGroup(
+            jd_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 600));
@@ -683,7 +788,24 @@ public class PanelPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-   
+    private boolean validezNombre(String nombre){
+        boolean flag=false;
+        for (int i = 0; i < 10; i++) {
+            if(nombre.contains(i+"")){
+                flag=true;
+            }
+            else{
+                
+            }
+        }
+        if(flag==true){
+            return false;
+        }
+        else{
+            return true;
+        }
+       
+    }
     private void llenarPosiciones(){
         DefaultComboBoxModel model = (DefaultComboBoxModel) combobox_posicion.getModel(); 
         model.addElement("Delantero");
@@ -794,6 +916,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
         if(jl_jugadores.getSelectedIndex()>=0){
             if(evt.getButton()==3){
                 popup_jugadores.show(jl_jugadores, evt.getX(), evt.getY());
+                pos = jl_jugadores.getSelectedIndex();
             }
         }
     }//GEN-LAST:event_jl_jugadoresMouseClicked
@@ -815,8 +938,8 @@ public class PanelPrincipal extends javax.swing.JFrame {
             DefaultMutableTreeNode posicion;
             DefaultMutableTreeNode jugador;
         int jseleccionado = jl_jugadores.getSelectedIndex();
-        int [] eseleccionado = tree_equipos.getSelectionRows();
-        JOptionPane.showMessageDialog(jd_Transferencias, eseleccionado[0]+" /"+eseleccionado[1]);
+       
+        
     }//GEN-LAST:event_button_transferirMouseClicked
 
     private void button_crearequipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_crearequipoMouseClicked
@@ -919,6 +1042,44 @@ public class PanelPrincipal extends javax.swing.JFrame {
        
     }//GEN-LAST:event_menu_transferenciasActionPerformed
 
+    private void button_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_modificarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_button_modificarActionPerformed
+
+    private void button_modificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_modificarMouseClicked
+        boolean ver = validezNombre(tf_nombre_modificar.getText());
+        if(ver==true){
+            DefaultListModel l = (DefaultListModel) jl_jugadores.getModel();
+            ((Jugador)l.get(pos)).setNombre(tf_nombre_modificar.getText());
+            ((Jugador)l.get(pos)).setEdad((Integer)spinner_edadmodificar.getValue());
+            jl_jugadores.removeAll();
+            jl_jugadores.setModel(l);
+            jd_Modificar.setVisible(false);
+            jd_Transferencias.setVisible(true);
+            jd_Transferencias.pack();
+            jd_Transferencias.setSize(800, 600);
+       
+        }
+        else{
+            JOptionPane.showMessageDialog(jd_Modificar, "Error, el nomrbe contiene un numero");
+        }
+    }//GEN-LAST:event_button_modificarMouseClicked
+
+    private void jmenu_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenu_modificarActionPerformed
+        
+    }//GEN-LAST:event_jmenu_modificarActionPerformed
+
+    private void jmenu_modificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmenu_modificarMouseClicked
+        this.setVisible(false);
+        
+        DefaultListModel l = (DefaultListModel) jl_jugadores.getModel();
+        tf_nombre_modificar.setText(((Jugador)l.get(pos)).getNombre());
+        spinner_edadmodificar.setValue(((Jugador)l.get(pos)).getEdad());
+        jd_Modificar.setVisible(true);
+        jd_Modificar.pack();
+        jd_Modificar.setSize(800, 600);
+    }//GEN-LAST:event_jmenu_modificarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -957,6 +1118,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_crearequipo;
     private javax.swing.JButton button_crearjugadores;
+    private javax.swing.JButton button_modificar;
     private javax.swing.JButton button_show_crearequipo;
     private javax.swing.JButton button_show_crearjugadores;
     private javax.swing.JButton button_show_transferencias;
@@ -976,6 +1138,9 @@ public class PanelPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -989,6 +1154,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1000,6 +1166,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JDialog jd_CrearEquipos;
     private javax.swing.JDialog jd_CrearJugadores;
+    private javax.swing.JDialog jd_Modificar;
     private javax.swing.JDialog jd_Transferencias;
     private javax.swing.JList<String> jl_jugadores;
     private javax.swing.JMenu jmenu_eliminar;
@@ -1009,9 +1176,11 @@ public class PanelPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menu_transferencias;
     private javax.swing.JPopupMenu popup_jugadores;
     private javax.swing.JSpinner spinner_edad;
+    private javax.swing.JSpinner spinner_edadmodificar;
     private javax.swing.JTextField tf_ciudad;
     private javax.swing.JTextField tf_estadio;
     private javax.swing.JTextField tf_nombreJug;
+    private javax.swing.JTextField tf_nombre_modificar;
     private javax.swing.JTextField tf_nombreequipos;
     private javax.swing.JTextField tf_pais;
     private javax.swing.JPanel transferencias_goback;
