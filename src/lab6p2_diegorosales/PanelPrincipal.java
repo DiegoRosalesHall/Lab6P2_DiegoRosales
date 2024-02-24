@@ -992,7 +992,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
             tf_pais.setText("");
                    
                     
-             
+             JOptionPane.showMessageDialog(jd_CrearEquipos, "Has creado el Equipo");
         }
     }//GEN-LAST:event_button_crearequipoMouseClicked
 
@@ -1013,7 +1013,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
             jl_jugadores.setModel(m);
             
             tf_nombreJug.setText("");
-            
+            JOptionPane.showMessageDialog(jd_CrearJugadores, "Has creado al jugador");
             
         }
     }//GEN-LAST:event_button_crearjugadoresMouseClicked
