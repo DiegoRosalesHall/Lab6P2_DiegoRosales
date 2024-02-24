@@ -15,8 +15,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form PanelPrincipal
      */
-    ArrayList<Jugador> jugadores = new ArrayList<>();
-    ArrayList<Equipo> equipos = new ArrayList<>();
+    
     public PanelPrincipal() {
         
         
@@ -684,26 +683,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    private void vaciarList(){
-        
-        DefaultListModel modelo = (DefaultListModel) jl_jugadores.getModel();
-        modelo.removeAllElements();
-        jl_jugadores.setModel(modelo);
-    }
-    private void llenarList(){
-        if(jugadores.isEmpty()){
-            
-        }
-        else{
-        DefaultListModel modelo = (DefaultListModel) jl_jugadores.getModel();
-        for (int i = 0; i < jugadores.size(); i++) {
-            modelo.addElement(jugadores.get(i));
-            
-        }
-        jl_jugadores.setModel(modelo);
-        }
-    }
-    
+   
     private void llenarPosiciones(){
         DefaultComboBoxModel model = (DefaultComboBoxModel) combobox_posicion.getModel(); 
         model.addElement("Delantero");
@@ -807,8 +787,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
         jd_Transferencias.setVisible(true);
         jd_Transferencias.pack();
         jd_Transferencias.setSize(800, 600);
-        vaciarList();
-            llenarList();
+        
     }//GEN-LAST:event_button_show_transferenciasMouseClicked
 
     private void jl_jugadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_jugadoresMouseClicked
@@ -827,19 +806,19 @@ public class PanelPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_nombreequiposActionPerformed
 
+    private void llenarTree(){
+        DefaultTreeModel treemodel = (DefaultTreeModel) tree_equipos.getModel();
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) treemodel.getRoot();
+        for (int i = 0; i < raiz.getChildCount(); i++) {
+          
+        }
+    }
     private void button_transferirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_transferirMouseClicked
         DefaultTreeModel treemodel = (DefaultTreeModel) tree_equipos.getModel();
         DefaultListModel listmodel = (DefaultListModel) jl_jugadores.getModel();
         DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) treemodel.getRoot();
-        String nombre;
-        String posicion;
-        int edad;
         
-        nombre = ((Jugador)listmodel.get(jl_jugadores.getSelectedIndex())).getNombre();
-        posicion = ((Jugador)listmodel.get(jl_jugadores.getSelectedIndex())).getPosicion();
-        edad = ((Jugador)listmodel.get(jl_jugadores.getSelectedIndex())).getEdad();
         
-        boolean c = false;
         
     }//GEN-LAST:event_button_transferirMouseClicked
 
@@ -853,7 +832,35 @@ public class PanelPrincipal extends javax.swing.JFrame {
             e.setPais(tf_pais.getText());
             e.setCiudad(tf_ciudad.getText());
             e.setEstadio(tf_estadio.getText());
-            equipos.add(e);
+            
+            
+            DefaultTreeModel treemodel = (DefaultTreeModel) tree_equipos.getModel();
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) treemodel.getRoot();
+            
+             DefaultMutableTreeNode nodoEquipo;
+            nodoEquipo = new DefaultMutableTreeNode(new Equipo(tf_pais.getText(),tf_nombreequipos.getText(),tf_ciudad.getText(),tf_estadio.getText()));
+            
+            
+            boolean c = false;
+            int var = 0;
+            for (int i = 0; i < raiz.getChildCount(); i++) {
+                if(raiz.getChildAt(i).toString().equals(tf_pais.getText())){
+                    ((DefaultMutableTreeNode)raiz.getChildAt(i)).add(nodoEquipo);
+                    raiz.add(((DefaultMutableTreeNode)raiz.getChildAt(i)));
+                    c=true;
+                    
+                }
+            }
+            if(c==false){
+            DefaultMutableTreeNode nodoPais;
+            nodoPais = new DefaultMutableTreeNode(tf_pais.getText());
+            nodoPais.add(nodoEquipo);
+            raiz.add(nodoPais);
+            treemodel.reload();
+            }
+            else{
+                treemodel.reload();
+            }
             tf_ciudad.setText("");
             tf_estadio.setText("");
             tf_nombreequipos.setText("");
@@ -870,10 +877,15 @@ public class PanelPrincipal extends javax.swing.JFrame {
         }
         else{
             Jugador j = new Jugador();
+            
+            
             j.setNombre(tf_nombreJug.getText());
             j.setEdad((Integer)spinner_edad.getValue());
             j.setPosicion(combobox_posicion.getSelectedItem().toString());
-            jugadores.add(j);
+            DefaultListModel m = (DefaultListModel) jl_jugadores.getModel();
+            m.addElement(j);
+            jl_jugadores.removeAll();
+            jl_jugadores.setModel(m);
             
             tf_nombreJug.setText("");
             
@@ -907,8 +919,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
         jd_Transferencias.setVisible(true);
         jd_Transferencias.pack();
         jd_Transferencias.setSize(800, 600);
-        vaciarList();
-            llenarList();
+       
     }//GEN-LAST:event_menu_transferenciasActionPerformed
 
     /**
