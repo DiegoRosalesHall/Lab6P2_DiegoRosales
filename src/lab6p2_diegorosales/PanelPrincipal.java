@@ -936,14 +936,53 @@ public class PanelPrincipal extends javax.swing.JFrame {
 
     
     private void button_transferirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_transferirMouseClicked
+        pos=0;
         DefaultTreeModel treemodel = (DefaultTreeModel) tree_equipos.getModel();
         DefaultListModel listmodel = (DefaultListModel) jl_jugadores.getModel();
-        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) treemodel.getRoot();
+        pos = jl_jugadores.getSelectedIndex();
+        boolean flag = false;
+        if(jl_jugadores.getSelectedIndex()>=0){
+            DefaultMutableTreeNode path;
+           
+            DefaultMutableTreeNode temp;
         
-            DefaultMutableTreeNode posicion;
-            DefaultMutableTreeNode jugador;
-        int jseleccionado = jl_jugadores.getSelectedIndex();
-       
+        path = (DefaultMutableTreeNode)tree_equipos.getSelectionPath().getLastPathComponent();
+        Jugador j = new Jugador();
+        j = ((Jugador)listmodel.get(pos));
+        if(path.getUserObject() instanceof Equipo){
+        for (int i = 0; i < path.getChildCount(); i++) {
+            
+             temp = (DefaultMutableTreeNode) path.getChildAt(i);
+             
+                if(temp.getUserObject().equals(j.getPosicion())){
+                    DefaultMutableTreeNode transferido = (DefaultMutableTreeNode)path.getChildAt(i);
+                    temp.add(transferido);
+                    
+                    flag=true;
+                    break;
+                    
+                }
+                
+            }
+            
+        }
+        
+        if (flag==false){
+                    DefaultMutableTreeNode p = new DefaultMutableTreeNode(((Jugador)listmodel.get(pos)).getPosicion());
+                    DefaultMutableTreeNode jug = new DefaultMutableTreeNode(((Jugador)listmodel.get(pos)));
+                    p.add(jug);
+                    path.add(p);
+                    
+                    
+                }
+        
+        }
+        
+        tree_equipos.removeAll();
+        tree_equipos.setModel(treemodel);
+        tree_equipos.removeAll();
+        tree_equipos.setModel(treemodel);
+ 
         
     }//GEN-LAST:event_button_transferirMouseClicked
 
