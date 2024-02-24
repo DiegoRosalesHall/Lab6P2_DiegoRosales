@@ -806,20 +806,17 @@ public class PanelPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_nombreequiposActionPerformed
 
-    private void llenarTree(){
-        DefaultTreeModel treemodel = (DefaultTreeModel) tree_equipos.getModel();
-        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) treemodel.getRoot();
-        for (int i = 0; i < raiz.getChildCount(); i++) {
-          
-        }
-    }
+    
     private void button_transferirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_transferirMouseClicked
         DefaultTreeModel treemodel = (DefaultTreeModel) tree_equipos.getModel();
         DefaultListModel listmodel = (DefaultListModel) jl_jugadores.getModel();
         DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) treemodel.getRoot();
         
-        
-        
+            DefaultMutableTreeNode posicion;
+            DefaultMutableTreeNode jugador;
+        int jseleccionado = jl_jugadores.getSelectedIndex();
+        int [] eseleccionado = tree_equipos.getSelectionRows();
+        JOptionPane.showMessageDialog(jd_Transferencias, eseleccionado[0]+" /"+eseleccionado[1]);
     }//GEN-LAST:event_button_transferirMouseClicked
 
     private void button_crearequipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_crearequipoMouseClicked
