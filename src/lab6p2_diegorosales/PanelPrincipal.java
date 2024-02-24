@@ -936,6 +936,8 @@ public class PanelPrincipal extends javax.swing.JFrame {
 
     
     private void button_transferirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_transferirMouseClicked
+        
+        /*
         pos=0;
         DefaultTreeModel treemodel = (DefaultTreeModel) tree_equipos.getModel();
         DefaultListModel listmodel = (DefaultListModel) jl_jugadores.getModel();
@@ -983,7 +985,7 @@ public class PanelPrincipal extends javax.swing.JFrame {
         tree_equipos.removeAll();
         tree_equipos.setModel(treemodel);
  
-        
+        */
     }//GEN-LAST:event_button_transferirMouseClicked
 
     private void button_crearequipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_crearequipoMouseClicked
